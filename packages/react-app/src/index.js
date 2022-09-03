@@ -2,6 +2,8 @@ import "./index.css";
 
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { DAppProvider, Mainnet } from "@usedapp/core";
+import { BrowserRouter } from 'react-router-dom';
+
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -25,11 +27,13 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <React.StrictMode>
-    <DAppProvider config={config}>
-      <ApolloProvider client={client}>
-        <App />
-      </ApolloProvider>
-    </DAppProvider>
+    <BrowserRouter>
+      <DAppProvider config={config}>
+        <ApolloProvider client={client}>
+          <App />
+        </ApolloProvider>
+      </DAppProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root"),
 );

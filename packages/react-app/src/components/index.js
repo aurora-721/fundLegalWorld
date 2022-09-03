@@ -20,6 +20,7 @@ export const Button = styled.button`
   margin: 0px 20px;
   padding: 12px 24px;
   text-align: center;
+  cursor: pointer;
   text-decoration: none;
 `;
 
@@ -46,10 +47,16 @@ export const Image = styled.img`
   pointer-events: none;
 `;
 
-export const Link = styled.a.attrs({
+export const LinkComp = styled.a.attrs({
   target: "_blank",
   rel: "noopener noreferrer",
 })`
   color: #61dafb;
+  cursor: pointer;
   margin-top: 8px;
+  list-style: none;
+  list-style-type: none;
+  text-decoration: none;
+
+
 `;

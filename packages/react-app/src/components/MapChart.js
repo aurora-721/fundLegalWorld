@@ -1,5 +1,11 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import ReactDOM from "react-dom";
+import { Button, LinkComp } from "/";
+import { Link } from "react-router-dom";
+
+
+import "./mapstyle.css";
+
 
 import {
   ComposableMap,
@@ -7,10 +13,16 @@ import {
   Geography
 } from "react-simple-maps";
 
-const MapChart = ({ setTooltipContent }) => {
+
+const MapChart = () => {
+  const [content, setTooltipContent] = useState("");
+
   return (
-    <div>
-        <button>afglkas</button>
+    <div id="map">
+        
+            <Link to={'/fundpoland'} className="nav-link"><Button>FundPoland</Button></Link>
+        
+        <div style={{margin: 5}}>Fund {content}</div>
         <ComposableMap>
           <Geographies geography="/features.json">
             {({ geographies }) =>
@@ -18,11 +30,32 @@ const MapChart = ({ setTooltipContent }) => {
                 <Geography 
                 key={geo.rsmKey} 
                 geography={geo} 
+                onMouseEnter={() => {
+                    setTooltipContent(`${geo.properties.name}`);
+                }}
+                onMouseLeave={() => {
+                    setTooltipContent("");
+                  }}
+                  style={{
+                    default: {
+                      fill: "black",
+                      outline: "none"
+                    },
+                    hover: {
+                      fill: "#F53",
+                      outline: "none"
+                    },
+                    pressed: {
+                      fill: "#E42",
+                      outline: "none"
+                    }
+                  }}
                 />
               ))
             }
           </Geographies>
         </ComposableMap>
+
     </div>
   );
 };

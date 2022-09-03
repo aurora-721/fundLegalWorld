@@ -2,11 +2,15 @@ import { useQuery } from "@apollo/client";
 import { Contract } from "@ethersproject/contracts";
 import { shortenAddress, useCall, useEthers, useLookupAddress } from "@usedapp/core";
 import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+
+import Home from './components/Home';
+import FundPoland from './components/FundPoland';
 import ReactDOM from "react-dom";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import MapChart from "./components/MapChart";
 
-import { Body, Button, Container, Header, Image, Link } from "./components";
+import { Body, Button, Container, Header, Image, LinkComp } from "./components";
 import logo from "./ethereumLogo.png";
 
 import { addresses, abis } from "@my-app/contracts";
@@ -72,29 +76,24 @@ function App() {
   }, [loading, subgraphQueryError, data]);
 
   return (
+
     <Container>
       <Header>
+      <Link to={'/'} className="nav-link"><LinkComp>Home</LinkComp>  </Link>
+      
         <WalletButton />
       </Header>
       <Body>
-        <MapChart />
-        <ComposableMap>
-          <Geographies geography="/features.json">
-            {({ geographies }) =>
-              geographies.map((geo) => (
-                <Geography 
-                key={geo.rsmKey} 
-                geography={geo} 
-                />
-              ))
-            }
-          </Geographies>
-        </ComposableMap>
-        <p>
-          Edit <code>packages/react-app/src/App.js</code> and save to reload.
-        </p>
+
+          <Routes>
+              <Route exact path='/' element={<Home />} />
+              <Route path='/fundpoland' element={<FundPoland />} />
+          </Routes>
+
+
       </Body>
     </Container>
+
   );
 }
 

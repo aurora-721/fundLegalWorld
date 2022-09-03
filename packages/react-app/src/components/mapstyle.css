@@ -1,0 +1,18 @@
+#map {
+    width: 100%;
+}
+
+#map svg {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+ #map path {
+    fill: black;
+  }
+  
+  .App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
