@@ -15,7 +15,7 @@ const WrapContributeComponent = () => {
   const { status } = state
 
   const wrapContribute = () => {
-    void send(1, 522000);
+    void send(2, 150 * 18);
   }
 
   return (
@@ -39,7 +39,7 @@ const About = () => {
     const { error: contractCallError, value: details } = useCall({
        contract: new Contract(addresses.legislatoor, abis.legislatoor),
        method: "details",
-       args: [1],
+       args: [2],
     }) ?? { };
 
     return (
