@@ -5,6 +5,7 @@ import { addresses, abis } from "@my-app/contracts";
 import { Contract } from "@ethersproject/contracts";
 import { shortenAddress, useCall, useSendTransaction, useContractFunction, useEthers, useLookupAddress } from "@usedapp/core";
 import { utils } from 'ethers'
+import { RampInstantSDK } from '@ramp-network/ramp-instant-sdk';
 
 const About = () => {
     const [form, setForm] = useState({amount: 0});
@@ -27,6 +28,9 @@ const About = () => {
        args: [1],
     }) ?? { };
 
+
+
+
     return (
         <div>
           <h2>Fund Poland legal fees</h2>
@@ -43,6 +47,21 @@ const About = () => {
             }} name="Broker_Fees" min="0" max="10000" step="1"/>
             <div>
             <Submit style={{marginTop: 30 }}/>
+            <Button
+            style={{backgroundColor: 'green', color: 'white'}}
+             onClick={() => {
+                console.log(form.amount);
+
+                new RampInstantSDK({
+                    hostAppName: 'your dApp',
+                    hostLogoUrl: 'https://rampnetwork.github.io/assets/misc/test-logo.png',
+                    swapAmount: '150000000', // 150 ETH in wei
+                    swapAsset: 'USDC',
+                    userAddress: 'user blockchain address',
+                  }).on('*', event => console.log(event)).show();
+                  
+            }}>Pay with Fiat</Button>
+
 
             </div>
           </form>
