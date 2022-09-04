@@ -20,11 +20,8 @@ const MapChart = () => {
 
   return (
     <div id="map">
-    <Button onClick={()=> {
-        navigate("/fundpoland")
-    }}>FundPoland</Button>
-        
-        <div style={{margin: 5}}>Fund {content}</div>
+       
+        <div style={{margin: 5}}>Fund: {content}</div>
         <ComposableMap>
           <Geographies geography="/features.json">
             {({ geographies }) =>
@@ -34,6 +31,9 @@ const MapChart = () => {
                 geography={geo} 
                 onMouseEnter={() => {
                     setTooltipContent(`${geo.properties.name}`);
+                }}
+                onMouseDownCapture={() => {
+                    navigate("/fundpoland")
                 }}
                 onMouseLeave={() => {
                     setTooltipContent("");

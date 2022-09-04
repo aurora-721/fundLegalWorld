@@ -44,7 +44,7 @@ export const InputNumber = styled.input.attrs({
 
 export const Submit = styled.input.attrs({ 
   type: 'submit',
-  value: 'Submit'
+  value: 'Pay with Metamask'
 })`
   background-color: white;
   border: none;

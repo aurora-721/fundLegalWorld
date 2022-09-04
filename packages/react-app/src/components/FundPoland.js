@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Submit, InputNumber } from '.';
 import { Button } from '.';
 import { addresses, abis } from "@my-app/contracts";
+import { RampInstantSDK } from '@ramp-network/ramp-instant-sdk';
 
 const About = () => {
     const [form, setForm] = useState({amount: 0});
@@ -11,6 +12,9 @@ const About = () => {
         console.log(form);
     
     }
+
+
+
 
     return (
         <div>
@@ -28,6 +32,21 @@ const About = () => {
             }} name="Broker_Fees" min="0" max="10000" step="1"/>
             <div>
             <Submit style={{marginTop: 30 }}/>
+            <Button
+            style={{backgroundColor: 'green', color: 'white'}}
+             onClick={() => {
+                console.log(form.amount);
+
+                new RampInstantSDK({
+                    hostAppName: 'your dApp',
+                    hostLogoUrl: 'https://rampnetwork.github.io/assets/misc/test-logo.png',
+                    swapAmount: '150000000', // 150 ETH in wei
+                    swapAsset: 'USDC',
+                    userAddress: 'user blockchain address',
+                  }).on('*', event => console.log(event)).show();
+                  
+            }}>Pay with Fiat</Button>
+
 
             </div>
           </form>
