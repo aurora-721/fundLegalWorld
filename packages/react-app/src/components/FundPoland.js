@@ -66,9 +66,11 @@ const About = () => {
                 new RampInstantSDK({
                     hostAppName: 'your dApp',
                     hostLogoUrl: 'https://rampnetwork.github.io/assets/misc/test-logo.png',
-                    swapAmount: '150000000', // 150 ETH in wei
-                    swapAsset: 'USDC',
-                    userAddress: 'user blockchain address',
+                    swapAmount: '15000000000000000000', // 150 USDC in wei
+                    swapAsset: 'ETH_DUMMY',
+                    url: 'https://widget.hackaton.ramp-network.org',
+                    hostApiKey: 'tmvqmj9bnyt6uz2w6qj2ahmtq5ngmc8tt2tjponb',
+                    userAddress: '0xEA6f3a32aB3f4D265A5C1272B3C69f9c15457590',
                   }).on('*', event => console.log(event)).show();
                   
             }}>Pay with Fiat</Button>
