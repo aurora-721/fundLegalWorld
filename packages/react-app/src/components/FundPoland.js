@@ -3,7 +3,8 @@ import { Submit, InputNumber } from '.';
 import { Button } from '.';
 import { addresses, abis } from "@my-app/contracts";
 import { Contract } from "@ethersproject/contracts";
-import { shortenAddress, useCall, useEthers, useLookupAddress } from "@usedapp/core";
+import { shortenAddress, useCall, useSendTransaction, useContractFunction, useEthers, useLookupAddress } from "@usedapp/core";
+import { utils } from 'ethers'
 
 const About = () => {
     const [form, setForm] = useState({amount: 0});
@@ -11,8 +12,13 @@ const About = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         console.log(form);
+
+        const legislatorInterface = new utils.Interface(abis.legislatoor)
+        const contract = new Contract(addresses.legislatoor, legislatorInterface)
     
-    }
+        const { state, send } = useContractFunction(contract, 'contribute', { transactionName: 'Wrap' });
+        send({ jurisdictionId: 1, amount: utils.parseEther(form.amount) });
+      }
     
     const { error: contractCallError, value: details } =
     useCall({
@@ -26,8 +32,8 @@ const About = () => {
           <h2>Fund Poland legal fees</h2>
           <p>Current money pledged: {(details?.totalContributions ?? 0) / 18} USDC</p>
           <p>Amount yet to be pledged: 300.00 €</p>
-          <p>Percentage funded: 10%</p>
-          <form onSubmit={onSubmit}>
+          <p>Percentage funded.: 10%</p>
+          <form onSubmit={(e)=> {onSubmit(e)}}>
             <label htmlFor="fname">Input amount you want to pledge: </label>
             <InputNumber value={form.amount} onChange={(e) => {
                 setForm({
