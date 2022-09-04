@@ -8,7 +8,7 @@ const hre = require("hardhat");
 
 async function main() {
   const token = {
-    address: "0xF7603dBfe8A9fD3a58FC327F2da8D55A9b1CFF0d"
+    address: "0x599C7d9E32CFe8F5d4fc843C0e545382B6D670E5"
   }
 
   const Legislatoor = await hre.ethers.getContractFactory("Legislatoor");
