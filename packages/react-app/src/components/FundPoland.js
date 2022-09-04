@@ -16,9 +16,6 @@ const About = () => {
 
         const legislatorInterface = new utils.Interface(abis.legislatoor)
         const contract = new Contract(addresses.legislatoor, legislatorInterface)
-    
-        const { state, send } = useContractFunction(contract, 'contribute', { transactionName: 'Wrap' });
-        send({ jurisdictionId: 1, amount: utils.parseEther(form.amount) });
       }
     
     const { error: contractCallError, value: details } =
