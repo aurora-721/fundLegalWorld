@@ -71,6 +71,7 @@ function App() {
     <Container>
       <Header>
       <Link to={'/'} className="nav-link">Home  </Link>
+      <Link to={'/submitlegal'} className="nav-link">Submit Legal  </Link>
       
       <WalletButton />
       </Header>
