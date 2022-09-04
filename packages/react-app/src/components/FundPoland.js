@@ -30,7 +30,7 @@ const About = () => {
       const { status } = state
   
       const wrapContribute = () => {
-        void send(1, 10);
+        void send(1, 522000);
       }
   
       return (
@@ -45,9 +45,8 @@ const About = () => {
     return (
         <div>
           <h2>Fund Poland legal fees</h2>
-          <p>Current money pledged: {(details?.totalContributions ?? 0) / 18} USDC</p>
-          <p>Amount yet to be pledged: 300.00 €</p>
-          <p>Percentage funded.: 10%</p>
+          <p>Current money pledged: {Math.round((details?.totalContributions ?? 0) / 18, 2)} USDC</p>
+          <p>Amount yet to be pledged: {80000 - Math.round((details?.totalContributions ?? 0) / 18, 2)} USDC</p>
           <WrapContributeComponent />
           <form onSubmit={(e)=> {onSubmit(e)}}>
             <label htmlFor="fname">Input amount you want to pledge: </label>
