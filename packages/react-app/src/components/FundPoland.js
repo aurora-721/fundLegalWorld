@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Submit, InputNumber } from '.';
-
-
+import { Button } from '.';
+import { addresses, abis } from "@my-app/contracts";
 
 const About = () => {
     const [form, setForm] = useState({amount: 0});
