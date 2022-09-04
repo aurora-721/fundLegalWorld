@@ -24,6 +24,42 @@ export const Button = styled.button`
   text-decoration: none;
 `;
 
+
+export const InputNumber = styled.input.attrs({ 
+  type:"number", 
+  id: "broker_fees",
+  required: "required"
+})`
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  color: #282c34;
+  font-size: 16px;
+  margin: 0px 20px;
+  padding: 12px 24px;
+  cursor: pointer;
+  text-decoration: none;
+`;
+
+
+export const Submit = styled.input.attrs({ 
+  type: 'submit',
+  value: 'Submit'
+})`
+  background-color: white;
+  border: none;
+  border-radius: 8px;
+  color: #282c34;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0px 20px;
+  padding: 12px 24px;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+`;
+
+
 export const Container = styled.div`
   background-color: #282c34;
   display: flex;

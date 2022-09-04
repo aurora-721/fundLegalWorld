@@ -1,7 +1,7 @@
 import React, { memo, useState } from "react";
 import ReactDOM from "react-dom";
 import { Button, LinkComp } from "/";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 import "./mapstyle.css";
@@ -16,11 +16,13 @@ import {
 
 const MapChart = () => {
   const [content, setTooltipContent] = useState("");
+  let navigate = useNavigate();
 
   return (
     <div id="map">
-        
-            <Link to={'/fundpoland'} className="nav-link"><Button>FundPoland</Button></Link>
+    <Button onClick={()=> {
+        navigate("/fundpoland")
+    }}>FundPoland</Button>
         
         <div style={{margin: 5}}>Fund {content}</div>
         <ComposableMap>

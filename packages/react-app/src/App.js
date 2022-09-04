@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import FundPoland from './components/FundPoland';
 import ReactDOM from "react-dom";
-import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import MapChart from "./components/MapChart";
 
 import { Body, Button, Container, Header, Image, LinkComp } from "./components";
@@ -81,16 +80,13 @@ function App() {
       <Header>
       <Link to={'/'} className="nav-link"><LinkComp>Home</LinkComp>  </Link>
       
-        <WalletButton />
+      <WalletButton />
       </Header>
       <Body>
-
           <Routes>
               <Route exact path='/' element={<Home />} />
               <Route path='/fundpoland' element={<FundPoland />} />
           </Routes>
-
-
       </Body>
     </Container>
 
