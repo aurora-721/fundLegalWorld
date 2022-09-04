@@ -14,18 +14,32 @@ const About = () => {
         e.preventDefault();
         console.log(form);
 
-        const legislatorInterface = new utils.Interface(abis.legislatoor)
-        const contract = new Contract(addresses.legislatoor, legislatorInterface)
       }
     
-    const { error: contractCallError, value: details } =
-    useCall({
+    const { error: contractCallError, value: details } = useCall({
        contract: new Contract(addresses.legislatoor, abis.legislatoor),
        method: "details",
        args: [1],
     }) ?? { };
 
-
+    const WrapContributeComponent = () => {
+      const legislatorInterface = new utils.Interface(abis.legislatoor)
+      const contract = new Contract(addresses.legislatoor, legislatorInterface)
+    
+      const { state, send } = useContractFunction(contract, 'contribute', { transactionName: 'Wrap' });
+      const { status } = state
+  
+      const wrapContribute = () => {
+        void send(1, 10);
+      }
+  
+      return (
+        <div>
+          <button onClick={() => wrapContribute()}>Contribute</button>
+          <p>Status: {status}</p>
+        </div>
+      )
+    }
 
 
     return (
@@ -34,6 +48,7 @@ const About = () => {
           <p>Current money pledged: {(details?.totalContributions ?? 0) / 18} USDC</p>
           <p>Amount yet to be pledged: 300.00 €</p>
           <p>Percentage funded.: 10%</p>
+          <WrapContributeComponent />
           <form onSubmit={(e)=> {onSubmit(e)}}>
             <label htmlFor="fname">Input amount you want to pledge: </label>
             <InputNumber value={form.amount} onChange={(e) => {
