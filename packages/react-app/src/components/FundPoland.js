@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Submit, InputNumber } from '.';
 import { Button } from '.';
 import { addresses, abis } from "@my-app/contracts";
+import { Contract } from "@ethersproject/contracts";
+import { shortenAddress, useCall, useEthers, useLookupAddress } from "@usedapp/core";
 
 const About = () => {
     const [form, setForm] = useState({amount: 0});
@@ -11,11 +13,18 @@ const About = () => {
         console.log(form);
     
     }
+    
+    const { error: contractCallError, value: details } =
+    useCall({
+       contract: new Contract(addresses.legislatoor, abis.legislatoor),
+       method: "details",
+       args: [1],
+    }) ?? { };
 
     return (
         <div>
           <h2>Fund Poland legal fees</h2>
-          <p>Current money pledged: 30.00 €</p>
+          <p>Current money pledged: {(details?.totalContributions ?? 0) / 18} USDC</p>
           <p>Amount yet to be pledged: 300.00 €</p>
           <p>Percentage funded: 10%</p>
           <form onSubmit={onSubmit}>
