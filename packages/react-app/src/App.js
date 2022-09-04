@@ -13,6 +13,7 @@ import { Body, Button, Container, Header, Image, LinkComp } from "./components";
 import logo from "./ethereumLogo.png";
 
 import GET_TRANSFERS from "./graphql/subgraph";
+import SubmitLegal from "./components/SubmitLegal";
 
 function WalletButton() {
   const [rendered, setRendered] = useState("");
@@ -77,6 +78,7 @@ function App() {
           <Routes>
               <Route exact path='/' element={<Home />} />
               <Route path='/fundpoland' element={<FundPoland />} />
+              <Route path='/submitlegal' element={<SubmitLegal />} />
           </Routes>
       </Body>
     </Container>

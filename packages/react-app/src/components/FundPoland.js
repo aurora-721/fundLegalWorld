@@ -13,9 +13,6 @@ const About = () => {
     
     }
 
-
-
-
     return (
         <div>
           <h2>Fund Poland legal fees</h2>
@@ -31,7 +28,7 @@ const About = () => {
                 });
             }} name="Broker_Fees" min="0" max="10000" step="1"/>
             <div>
-            <Submit style={{marginTop: 30 }}/>
+            <Submit value='Pay with Metamask' style={{marginTop: 30 }}/>
             <Button
             style={{backgroundColor: 'green', color: 'white'}}
              onClick={() => {

@@ -41,10 +41,24 @@ export const InputNumber = styled.input.attrs({
   text-decoration: none;
 `;
 
+export const InputText = styled.input.attrs({ 
+  type:"text", 
+  required: "required"
+})`
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  color: #282c34;
+  font-size: 16px;
+  margin: 0px 20px;
+  padding: 12px 24px;
+  cursor: pointer;
+  text-decoration: none;
+`;
+
 
 export const Submit = styled.input.attrs({ 
   type: 'submit',
-  value: 'Pay with Metamask'
 })`
   background-color: white;
   border: none;
@@ -93,6 +107,5 @@ export const LinkComp = styled.a.attrs({
   list-style: none;
   list-style-type: none;
   text-decoration: none;
-
 
 `;
