@@ -32,13 +32,11 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
       <DAppProvider config={config}>
         <ApolloProvider client={client}>
           <App />
         </ApolloProvider>
       </DAppProvider>
-    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root"),
 );

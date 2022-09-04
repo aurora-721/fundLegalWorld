@@ -66,10 +66,10 @@ function App() {
   }, [loading, subgraphQueryError, data]);
 
   return (
-
+    <Router>
     <Container>
       <Header>
-      <Link to={'/'} className="nav-link"><LinkComp>Home</LinkComp>  </Link>
+      <Link to={'/'} className="nav-link">Home  </Link>
       
       <WalletButton />
       </Header>
@@ -80,6 +80,7 @@ function App() {
           </Routes>
       </Body>
     </Container>
+    </Router>
 
   );
 }
